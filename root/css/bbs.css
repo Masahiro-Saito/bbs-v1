@@ -1,0 +1,64 @@
+/*============================================
+部品
+============================================*/
+/* テキスト */
+text {
+	width: 450x;
+}
+
+/* テキストエリア */
+textarea {
+	width: 600px;
+}
+
+/*============================================
+項目別
+============================================*/
+/* スレッド一覧 */
+.thread_list {
+	border:#95ea95	/* 枠線の色 */
+	solid 3px;		/* 枠線の太さ */
+	width: 600px;	/* 横幅 */
+	background-color: #95ea95;	/* 背景色 */
+}
+
+.thread_list_contents {
+	text-align: left;			/* 文字位置（横） */
+	height: 150px;				/* 縦幅 */
+	overflow: scroll;			/* スクロール表示 */ 
+	background-color: white;	/* 背景色 */
+}
+
+/* スレッド内容 */
+.thread_data {
+	border:#95ea95		/* 枠線の色 */
+	solid 3px;			/* 枠線の太さ */
+	width: 600px;		/* 横幅 */
+	text-align: left;	/* 文字位置（横） */
+	word-wrap: break-word;		/* 文字の折り返し */
+	background-color: #95ea95;	/* 背景色 */
+
+}
+
+.thread_data_contents {
+	background-color: white;	/* 背景色 */
+}
+
+/* ページ移動 */
+.thread_page {
+	
+}
+
+/* スレッド作成 */
+.thread_make {
+	border:#95ea95		/* 枠線の色 */
+	solid 3px;			/* 枠線の太さ */
+	width: 600px;		/* 横幅 */
+	text-align: left;	/* 文字位置（横） */
+	background-color: #95ea95; /* 背景色 */
+}
+
+.thread_make_contents {
+	background-color: white;	/* 背景色 */
+}
+
