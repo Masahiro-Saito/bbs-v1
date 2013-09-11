@@ -14,6 +14,35 @@ $thrdCtrl = new ThreadController();
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="./css/bbs.css">
+
+<script type="text/javascript">
+<!--
+// 入力チェック
+function validate(){
+
+	var error = "";
+
+	// スレッド名
+	if(document.addThreadForm.title.value == "") {
+		error += "「スレッド名」が未入力です。\r\n";
+	}
+	// 名前
+	if(document.addThreadForm.writer.value == "") {
+		error += "「名前」が未入力です。\r\n";
+	}
+	// 内容
+	if(document.addThreadForm.writetext.value == "") {
+		error += "「内容」が未入力です。\r\n";
+	}
+
+	// エラーメッセージを表示して処理を中止
+	if(error != "") {
+		window.alert(error);
+		return false;
+	}
+}
+// -->
+</script>
 </head>
 <body>
 	<div align="center">
@@ -44,7 +73,8 @@ $thrdCtrl = new ThreadController();
 			foreach($thrdCtrl->getThreadContents($list['id'], 5) as $cont) {
 				echo $no++ . '：' . $cont['writer'] . ' ' . $cont['writetime'];
 					echo "<br>";
-					echo $cont['writetext'];
+					// nl2br（改行文字を<br>タグに変換）
+					echo nl2br($cont['writetext']);
 					echo "<br><br>";
 				}
 			echo "</div></div>";
@@ -55,14 +85,17 @@ $thrdCtrl = new ThreadController();
 		<div class="thread_make">
 			<span>新規スレッド作成<span>
 			<div class="thread_make_contents">
-				<form method="post" action="./class/ThreadList.php?action=methodName">
+				<form name="addThreadForm"  method="post" action="./class/MakeController.php"  onSubmit="return validate()">
 					スレッド名：<br>
-					<input type="text" size="60" /><br>
+					<input name="title" type="text" size="60" /><br>
 					名前：<br>
-					<input type="text" size="60" /><br>
+					<input name="writer" type="text" size="60" /><br>
 					内容：<br>
-					<textarea col="40" rows="5" ></textarea><br>
+					<textarea name="writetext" col="40" rows="5" ></textarea><br>
 					<input type="submit" value="実行"/>
+					<!-- hidden -->
+					<input name="action" type="hidden" value="addThread" />
+					<input name="path" type="hidden" value="index" />
 				</form>
 			</div>
 		</div>

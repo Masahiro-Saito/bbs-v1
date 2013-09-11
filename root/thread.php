@@ -18,6 +18,31 @@ $thrdCtrl = new ThreadController();
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="./css/bbs.css">
+
+<script type="text/javascript">
+<!--
+// 入力チェック
+function validate(){
+
+	var error = "";
+
+	// 名前
+	if(document.addContentsForm.writer.value == "") {
+		error += "「名前」が未入力です。\r\n";
+	}
+	// 内容
+	if(document.addContentsForm.writetext.value == "") {
+		error += "「内容」が未入力です。\r\n";
+	}
+
+	// エラーメッセージを表示して処理を中止
+	if(error != "") {
+		window.alert(error);
+		return false;
+	}
+}
+// -->
+</script>
 </head>
 <body>
 	<div align="center">
@@ -58,12 +83,17 @@ $thrdCtrl = new ThreadController();
 		<div class="thread_make">
 			<span>書き込む<span>
 			<div class="thread_make_contents">
-				<form>
+				<form name="addContentsForm"  method="post" action="./class/MakeController.php"  onSubmit="return validate()">
 					名前：<br>
-					<input type="text" size="60" /><br>
+					<input name="writer" type="text" size="60" /><br>
 					内容：<br>
-					<textarea col="40" rows="5" ></textarea><br>
+					<textarea name="writetext" col="40" rows="5" ></textarea><br>
 					<input type="submit" value="実行"/>
+					<!-- hidden -->
+					<input name="action" type="hidden" value="addContents" />
+					<input name="path" type="hidden" value="thread" />
+					<input name="id" type="hidden" value=<?php echo $id; ?> />
+					<input name="title" type="hidden" value=<?php echo $title; ?> />
 				</form>
 			</div>
 		</div>
