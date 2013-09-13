@@ -41,6 +41,11 @@ function validate(){
 		return false;
 	}
 }
+
+function redirectEdit(id, title) {
+	window.alert(id);
+	window.alert(title);
+}
 // -->
 </script>
 </head>
@@ -65,6 +70,7 @@ function validate(){
 			echo "<br>";
 			echo "<div class='thread_data'>";
 			echo "<a href=./thread.php?id=$list[id]&title=$list[title] />" . $list['title'] . "</a>";
+			echo "<input type='button' value='編集' onClick=\"location.href='./edit.php?id=$list[id]&title=$list[title]'\">";
 			echo "<br>";
 			echo "<div class='thread_data_contents'>";
 

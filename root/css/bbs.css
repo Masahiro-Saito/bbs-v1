@@ -25,7 +25,7 @@ textarea {
 .thread_list_contents {
 	text-align: left;			/* 文字位置（横） */
 	height: 150px;				/* 縦幅 */
-	overflow: scroll;			/* スクロール表示 */ 
+	overflow: scroll;			/* スクロール表示 */
 	background-color: white;	/* 背景色 */
 }
 
@@ -46,7 +46,7 @@ textarea {
 
 /* ページ移動 */
 .thread_page {
-	
+
 }
 
 /* スレッド作成 */

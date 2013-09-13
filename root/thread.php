@@ -64,6 +64,7 @@ function validate(){
 <?php
 			// スレッド名表示
 			echo "<a href=./thread.php?id=$id&title=$title />" . $title . "</a>";
+			echo "<input type='button' value='編集' onClick=\"location.href='./edit.php?id=$list[id]&title=$list[title]'\">";
 ?>
 			<div class="thread_data_contents">
 <?php
