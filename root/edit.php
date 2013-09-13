@@ -11,6 +11,12 @@ require_once("./class/ThreadController.php");
 $thrdCtrl = new ThreadController();
 // 書き込みを全件取得
 $cont = $thrdCtrl->getThreadContents($id, 0);
+// 書き込み内容削除ボタンの制御項目作成
+$contsDelBtn = "disabled";
+if (count($cont) > 1) {
+	$contsDelBtn = "";
+}
+
 ?>
 
 <html>
@@ -76,7 +82,7 @@ function validate_cont(form, btn){
 	// 各項目に必要な値を設定
 	form.action.value = btn.name;
 
-	// スレッド名変更の場合
+	// 書き込み内容変更の場合
 	if(btn.name == "editContents") {
 		var error = "";
 
@@ -100,8 +106,9 @@ function validate_cont(form, btn){
 		form.submit();
 	}
 
-	// スレッド削除の場合
+	// 書き込み内容削除の場合
 	if(btn.name == "deleteContents") {
+		// 削除確認
 		if(window.confirm('削除してもよろしいですか？')) {
 			// 処理を実行
 			form.submit();
@@ -147,7 +154,7 @@ function validate_cont(form, btn){
 					内容：<br>
 					<textarea name="writetext" col="40" rows="5"><?php echo $cont[0]['writetext']; ?></textarea><br>
 					<input name="editContents" type="button" value="書き込み変更""  onClick="validate_cont(this.form, this)"/>
-					<input name="deleteContents" type="button" value="書き込み削除""  onClick="validate_cont(this.form, this)"/>
+					<input name="deleteContents" type="button" value="書き込み削除""  onClick="validate_cont(this.form, this)" <?php echo $contsDelBtn; ?>/>
 					<!-- hidden -->
 					<input name="action" type="hidden" value="" />
 					<input name="path" type="hidden" value="edit" />

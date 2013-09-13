@@ -120,7 +120,7 @@ class MakeController {
 		// トランザクション(autoCommit対策)
 		$dbPdo->beginTransaction();
 		// 新規書き込み作成
-		self::insertContents($dbPdo, $param['id'], $param['title'], $param['writetext']);
+		self::insertContents($dbPdo, $param['id'], $param['writer'], $param['writetext']);
 		// コミット
 		$dbPdo->commit();
 	}
@@ -247,7 +247,6 @@ class MakeController {
 		$stmt->bindParam(1, $id);
 		$stmt->bindParam(2, $writer);
 		$stmt->bindParam(3, $writetext);
-		echo $sql;
 		// 実行
 		$stmt->execute();
 	}
@@ -266,7 +265,6 @@ class MakeController {
 		// パラメータ設定(場所, パラメータ内容)
 		$stmt->bindParam(1, $title);
 		$stmt->bindParam(2, $id);
-		echo $sql;
 		// 実行
 		$stmt->execute();
 	}
@@ -284,7 +282,6 @@ class MakeController {
 		$stmt = $dbPdo->prepare($sql);
 		// パラメータ設定(場所, パラメータ内容)
 		$stmt->bindParam(1, $id);
-		echo $sql;
 		// 実行
 		$stmt->execute();
 	}
@@ -302,7 +299,6 @@ class MakeController {
 		$stmt = $dbPdo->prepare($sql);
 		// パラメータ設定(場所, パラメータ内容)
 		$stmt->bindParam(1, $thread_list_id);
-		echo $sql;
 		// 実行
 		$stmt->execute();
 	}
@@ -332,7 +328,6 @@ class MakeController {
 		$stmt->bindParam(2, $writetext);
 		$stmt->bindParam(3, $id);
 		$stmt->bindParam(4, $thread_list_id);
-		echo $sql;
 		// 実行
 		$stmt->execute();
 	}
@@ -352,7 +347,6 @@ class MakeController {
 		// パラメータ設定(場所, パラメータ内容)
 		$stmt->bindParam(1, $id);
 		$stmt->bindParam(2, $thread_list_id);
-		echo $sql;
 		// 実行
 		$stmt->execute();
 	}
